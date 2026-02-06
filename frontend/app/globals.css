@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000;
+  --foreground: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #000000;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ==== BOTÕES HEADER (AGORA ROXO/BLUE FUTURISTA) ==== */
+
+.hover-btn {
+  position: relative;
+  width: 140px;
+  height: 40px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-weight: 600;
+  color: #7a00ff; /* texto */
+}
+
+.hover-btn svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  fill: none;
+  stroke: #7a00ff;   /* borda */
+  stroke-width: 2px;
+  stroke-dasharray: 150 500;
+  stroke-dashoffset: 150;
+  transition: stroke-dashoffset 1s ease-in-out;
+}
+
+.hover-btn:hover svg {
+  stroke-dashoffset: -500;
+}
+
+.hover-btn span {
+  position: relative;
+  z-index: 10;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+/* ==== BOTÕES CENTRAIS ==== */
+
+.btn-center {
+  position: relative;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #7a00ff;
+  border: 2px solid #7a00ff;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: 0.4s ease-in-out;
+}
+
+.btn-center::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 2px solid #7a00ff;
+  transform: scale(1.4);
+  opacity: 0;
+  transition: 0.4s ease-in-out;
+}
+
+.btn-center:hover {
+  color: #fff;
+  background: linear-gradient(45deg, #240035, #003b88);
+  box-shadow: 0 0 20px rgba(122,0,255,0.7),
+              0 0 40px rgba(0,59,136,0.5);
+}
+
+.btn-center:hover::before {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* === SELECT DARK MODE PADRÃO (combina com o dashboard) === */
+select {
+  background-color: #111 !important;
+  color: #ddd !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+select option {
+  background-color: #0d0d0d !important;
+  color: #ddd !important;
+  padding: 8px;
+}
+
+/* evita highlight branco */
+select:focus {
+  outline: none !important;
+  border-color: #6a00ff !important;
+}
